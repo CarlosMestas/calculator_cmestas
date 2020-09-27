@@ -1,0 +1,3 @@
+/home/ubuntucarlosmestas/TC/github/calculator_cmestas/build-calculator_cmestas-Desktop_Qt_5_15_1_GCC_64bit-Debug/CMakeFiles/rebuild_cache.dir
+/home/ubuntucarlosmestas/TC/github/calculator_cmestas/build-calculator_cmestas-Desktop_Qt_5_15_1_GCC_64bit-Debug/CMakeFiles/edit_cache.dir
+/home/ubuntucarlosmestas/TC/github/calculator_cmestas/build-calculator_cmestas-Desktop_Qt_5_15_1_GCC_64bit-Debug/CMakeFiles/calculator_cmestas.dir

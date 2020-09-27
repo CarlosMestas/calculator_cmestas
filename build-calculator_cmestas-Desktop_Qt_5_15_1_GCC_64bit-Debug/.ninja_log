@@ -1,0 +1,6 @@
+# ninja log v5
+2	73	1601238857990528222	CMakeFiles/calculator_cmestas.dir/Operation.cpp.o	cf5aadb51006130
+0	1386	1601238859302525415	CMakeFiles/calculator_cmestas.dir/Calculator.cpp.o	746e1be5054fe666
+73	1486	1601238859402525201	CMakeFiles/calculator_cmestas.dir/TextProcesor.cpp.o	84c16da3dc7b3824
+1386	2354	1601238859850524243	CMakeFiles/calculator_cmestas.dir/main.cpp.o	cdbec3e2708457df
+2354	2410	1601238860326523227	calculator_cmestas	bb62eb65ded5d10e
