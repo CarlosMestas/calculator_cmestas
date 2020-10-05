@@ -11,6 +11,7 @@
 class Operation{
 public:
     static std::uint16_t adition(std::uint16_t _number1, std::uint16_t _number2);
+    static std::uint16_t multiplication(std::uint16_t _number1, std::uint16_t _number2);
 
 };
 

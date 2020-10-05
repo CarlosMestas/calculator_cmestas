@@ -4,8 +4,30 @@
 // Autor: Carlos Alberto Mestas Escarcena
 
 #include "Calculator.h"
+#include "BinaryExpressionTree.h"
 
 int main(){
+    BinaryExpressionTree myTree1;
+    BinaryExpressionTree myTree2;
+    BinaryExpressionTree myTree3;
+    BinaryExpressionTree myTree4;
+
+    std::string test1 = "33+1";
+    std::string test2 = "2*5";
+    std::string test3 = "12+4*12";
+    std::string test4 = "34*3+1*90";
+
+    myTree1.enterPlaneText(test1);
+    myTree2.enterPlaneText(test2);
+    myTree3.enterPlaneText(test3);
+    myTree4.enterPlaneText(test4);
+
+    myTree1.printTree();
+    myTree2.printTree();
+    myTree3.printTree();
+    myTree4.printTree();
+
+    /*
     std::string test1 = "12+34";
     std::string test2 = "42+1+34";
     std::string test3 = "1+2+3+4+5+6";
@@ -15,5 +37,6 @@ int main(){
     myCalculator.operate(test2);
     myCalculator.operate(test3);
     myCalculator.operate(test4);
+    */
     return 0;
 }

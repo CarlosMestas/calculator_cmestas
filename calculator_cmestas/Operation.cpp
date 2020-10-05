@@ -9,3 +9,8 @@ std::uint16_t Operation::adition(std::uint16_t _number1, std::uint16_t _number2)
     std::uint16_t answer = _number1 + _number2;
     return answer;
 }
+
+std::uint16_t Operation::multiplication(std::uint16_t _number1, std::uint16_t _number2){
+    std::uint16_t answer = _number1 * _number2;
+    return answer;
+}

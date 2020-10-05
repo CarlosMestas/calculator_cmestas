@@ -25,10 +25,11 @@ std::vector<uint16_t> TextProcesor::obtainNumbers(std::string _text){
     uint8_t size = _text.size();
     while(i < size){
         std::string tmpNumber = "";
-        while(i < size && _text.at(i) != '+' ){
+        while(i < size && (_text.at(i) != '+') && ( _text.at(i) != '*')){
+
             tmpNumber += _text.at(i);
             i++;
-        }
+        } 
         vectorOfNumbers.push_back(std::stoi(tmpNumber));
         i++;
     }
@@ -42,6 +43,9 @@ std::vector<char> TextProcesor::obtainOperations(std::string _text){
     uint8_t size = _text.size();
     while(i < size){
         if(_text.at(i) == '+'){
+            vectorOfOperations.push_back(_text.at(i));
+        }
+        else if(_text.at(i) == '*'){
             vectorOfOperations.push_back(_text.at(i));
         }
         i++;
