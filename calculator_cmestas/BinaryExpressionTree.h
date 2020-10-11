@@ -12,10 +12,12 @@
 
 #include <stddef.h>
 #include <cinttypes>
+#include <vector>
 
 class BinaryExpressionTree{
 private:
     BETNode *rootNode; // Nodo raiz
+    std::vector<std::string> tree;
 public:
     BinaryExpressionTree();
     void putNode(BETNode *_node); // Metodo para ingresar un nodo
@@ -23,9 +25,12 @@ public:
     void putLF(BETNode *_nodeFather, std::string _num1, std::string _num2); // Metodo para ingresar dos nodos con una operacion
     void enterPlaneText(std::string _text); // Metodo para ingresar el texto plano
     void operate(); // Metodo para realizar la suma (Aun sin terminar)
-    void operateAux(uint16_t _ans, BETNode *_node); // Metodo que ayuda a realizar la suma (Aun sin terminar)
+    void operateAux(std::vector<std::string> _tree); // Metodo que ayuda a realizar la suma (Aun sin terminar)
     void printTree(); // Metodo para imprimir el arbol
     void printTreeAux(BETNode *_node); // Metodo que ayuda a imprimir el arbol
+    void putInPostOrder(); // Metodo para imprimir el arbol
+    void putInPostOrderAux(BETNode *_node); // Metodo que ayuda a imprimir el arbol
+
 };
 
 #endif // BINARYEXPRESSIONTREE_H

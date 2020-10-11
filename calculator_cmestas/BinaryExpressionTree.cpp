@@ -113,27 +113,95 @@ void BinaryExpressionTree::printTreeAux(BETNode *_node){
     }
 }
 
+
+///////////////////////////////////////////////////////////////////////
 /*
- * Metodo para realizar la suma
- * AUN NO IMPLEMENTADO TOTALMENTE
+ * Metodo que nos va a permitir en ingreso de datos en un vector
+ * mediante un ordenamiento en post orden
+ */
+void BinaryExpressionTree::putInPostOrder(){
+    putInPostOrderAux(rootNode);
+    uint8_t size = tree.size();
+    for(int i = 0; i < size; i++){
+        std::cout << "Test F " << tree.at(i) << std::endl;
+    }
+}
+
+/*
+ * Metodo auxiliar que ira recorriendo el arbol nodo por nodo
+ */
+void BinaryExpressionTree::putInPostOrderAux(BETNode *_node){
+    if(_node != NULL){
+        putInPostOrderAux(_node->leftNode);
+        putInPostOrderAux(_node->rightNode);
+        std::cout << _node->getData() << " Test post orden" << std::endl;
+        tree.push_back(_node->getData());
+    }
+}
+
+/*
+ * Metodo para realizar las operaciones
  */
 void BinaryExpressionTree::operate(){
-    uint16_t ans = 0;
-    operateAux(ans, rootNode);
+    operateAux(tree);
+
 }
 
 /*
- * Metodo que ayuda a realizar la suma
- * AUN NO IMPLEMENTADO TOTALMENTE
+ * Metodo que ayuda a realizar las operaciones
+ * Este método trabaja iterativamente
  */
-void BinaryExpressionTree::operateAux(uint16_t _ans,BETNode *_node){
-    if(_node->leftNode != NULL && _node->rightNode != NULL){
-        if(_node->getData() == "+"){
-            _ans = Operation::adition(std::stoi(_node->leftNode->getData()),std::stoi(_node->rightNode->getData()));
+
+void BinaryExpressionTree::operateAux(std::vector<std::string> _tree){
+    // Este tipo de arbol se caracteriza porque siempre la cantidad de sus nodos es impar
+    uint8_t size = _tree.size();
+    // Cuanto solamente queden tres elementos para operar podemos sumarlos o multiplicarlos
+    if(size == 3){
+        if(_tree.at(2) == "+"){
+            uint16_t ans = std::stoi(_tree.at(0)) + std::stoi(_tree.at(1));
+            std::cout << "Answer " << ans << std::endl;
+        }
+        else if(_tree.at(2) == "*"){
+            uint16_t ans = std::stoi(_tree.at(0)) * std::stoi(_tree.at(1));
+            std::cout << "Answer " << ans << std::endl;
         }
     }
-
+    // Si tenemos mas de 3 elementos, en este caso 5, 7, 9, 11 ... entonces crearemos otro vector
+    // temporal donde iremos almacenando los distintos numeros que se van operando continuamente
+    else{
+        std::vector<std::string> aux;
+        uint16_t ansTmp;
+        if(_tree.at(2) == "+" || _tree.at(2) == "*"){
+            if(_tree.at(2) == "+"){
+                ansTmp = std::stoi(_tree.at(0)) + std::stoi(_tree.at(1));
+            }
+            else if (_tree.at(2) == "*"){
+                ansTmp = std::stoi(_tree.at(0)) * std::stoi(_tree.at(1));
+            }
+            aux.push_back(std::to_string(ansTmp));
+            for(int i = 3 ; i < size ; i++){
+                aux.push_back(_tree.at(i));
+            }
+        }
+        else{
+            aux.push_back(_tree.at(0));
+            if(_tree.at(3) == "+"){
+                ansTmp = std::stoi(_tree.at(1)) + std::stoi(_tree.at(2));
+            }
+            else if (_tree.at(3) == "*"){
+                ansTmp = std::stoi(_tree.at(1)) * std::stoi(_tree.at(2));
+            }
+            aux.push_back(std::to_string(ansTmp));
+            for(int i = 4 ; i < size ; i++){
+                aux.push_back(_tree.at(i));
+            }
+        }
+        operateAux(aux);
+    }
 }
+
+////////////////////////////////////////////////////////////////////////
+
 
 /*
  * Metodo que trata las operaciones que se ingresan como un solo dato
@@ -183,4 +251,5 @@ void BinaryExpressionTree::enterPlaneText(std::string _text){
 
         i2++;
     }
+    putInPostOrder();
 }
